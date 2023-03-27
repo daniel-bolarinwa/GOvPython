@@ -2,12 +2,11 @@ import timeit
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 
 # data cleansing and manipulation
 def predict_flight_delays():
-    flights = pd.read_csv('./flights.csv').sample(n=100000)
+    flights = pd.read_csv('./flights.csv',)
     airports = pd.read_csv('./airports.csv')
 
     flights.isnull().values.any()
@@ -33,8 +32,8 @@ def predict_flight_delays():
     var_to_remove=["DAY_OF_WEEK","AIRLINE","ORIGIN_AIRPORT","DESTINATION_AIRPORT"]
     flights.drop(var_to_remove, axis=1, inplace=True)
 
-    cleansedData = pd.concat([flights, flights_cat],axis=1).sample(n=70000)
-    print(cleansedData.head)
+    cleansedData = pd.concat([flights, flights_cat],axis=1)
+    print(cleansedData.columns)
 
     # model training
     X=cleansedData.drop("DEPARTURE_DELAY",axis=1)
@@ -45,7 +44,6 @@ def predict_flight_delays():
     reg_rf = RandomForestRegressor()
     reg_rf.fit(X_train,Y_train)
 
-    y_pred = reg_rf.predict(X_test)
-    print(reg_rf.score(X_train,Y_train))
+    print(reg_rf.score(X_test,Y_test))
 
 print(f"execution duration {timeit.timeit(predict_flight_delays, number=1)}")

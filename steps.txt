@@ -1,0 +1,19 @@
+replace names of day of the week to numbers
+
+convert categorical data into dummy indicators
+
+remove dummied columns from above
+
+concat dummied data with real data
+
+drop out y value from data
+
+extract y value from data
+
+train/test split
+
+train random forest regressor model/logistic regressor
+
+test trained model
+
+then time and benchmark it
