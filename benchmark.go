@@ -7,8 +7,7 @@ import (
 	"os"
 	"strconv"
 	"sync"
-
-	//	"time"
+	"time"
 
 	"github.com/go-gota/gota/dataframe"
 	"github.com/go-gota/gota/series"
@@ -20,6 +19,7 @@ import (
 )
 
 func main() {
+	start := time.Now()
 	file, err := os.Open("./flights.csv")
 	defer file.Close()
 	if err != nil {
@@ -27,16 +27,7 @@ func main() {
 	}
 	flights := dataframe.ReadCSV(file)
 
-	file, err = os.Open("./airports.csv")
-	if err != nil {
-		log.Fatal(err)
-	}
-	airports := dataframe.ReadCSV(file)
-
-	fmt.Println(flights)
-	fmt.Println(airports)
-
-	fmt.Println(flights.Names())
+	fmt.Println(flights.Describe())
 
 	flights = flights.Drop([]int{0, 5, 6, 10, 12, 13, 14, 15, 16, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30})
 
@@ -115,12 +106,12 @@ func main() {
 
 	flights.WriteCSV(fileOut)
 
-	data, err := base.ParseCSVToInstances("output.csv", true)
+	data, err := base.ParseCSVToInstances("./output.csv", true)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	rf := ensemble.NewRandomForest(100, 2)
+	rf := ensemble.NewRandomForest(100, 1.0)
 	cv, err := evaluation.GenerateCrossFoldValidationConfusionMatrices(data, rf, 4)
 	if err != nil {
 		log.Fatal(err)
@@ -132,11 +123,9 @@ func main() {
 	stdev := math.Sqrt(variance)
 
 	// Output the cross metrics to standard out.
-	fmt.Printf("\nAccuracy\n%.2f (+/- %.2f)\n\n", mean, stdev*2)
-
-	// start := time.Now()
-	// elapsed := time.Since(start)
-
+	fmt.Printf("\nAccuracy\n%.5f (+/- %.3f)\n\n", mean, stdev*2)
+	elapsed := time.Since(start).Seconds()
+	fmt.Printf("execution duration %v", elapsed)
 }
 
 // One Hot Code
