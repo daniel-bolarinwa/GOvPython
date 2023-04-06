@@ -28,3 +28,8 @@ sample command -> '& "C:\Program Files\Intel\Power Gadget 3.6\PowerLog3.0.exe" -
 Command can be 'python filepath.py' or 'go run filepath.go' or any other command you want so this bench marking tool is useful in that it can be used for all languages which are executable if you wish to do your own benchmark comparisons with other languages.
 
 With this command energy consumption report files are stored in directory of execution.
+
+<--POINTS OF IMPROVEMENT-->
+I had to create a function for OneHot coding myself using gonum matrices, this current process is quite slow compared to the native utility function in Python. If anyone is keen to update and improve this that would be great.
+
+OneHot Coding -> https://www.educative.io/blog/one-hot-encoding
