@@ -18,6 +18,8 @@ Gota (Go's alternative to Pandas) -> https://pkg.go.dev/github.com/go-gota/gota
 Gonum (Go's alternative to Numpy/Scipy) -> https://github.com/gonum/matrix -> This requires the CGO GCC compiler to be available on your local machine, GCC allows you to run native C++ code in your Go code/compiler
 Golearn (Go's alternative to SciKit-Learn) -> https://pkg.go.dev/github.com/sjwhitworth/golearn
 
+Install GCC compiler from here -> https://jmeubank.github.io/tdm-gcc/download/
+
 Benchmarking (I tested this on my Windows Intel(x64) laptop so you might need to investigate tools for other computer hardware architectures and Operating Systems):
 Intel Power Gadget -> https://www.intel.com/content/www/us/en/developer/articles/tool/power-gadget.html
 
