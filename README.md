@@ -20,3 +20,11 @@ Golearn (Go's alternative to SciKit-Learn) -> https://pkg.go.dev/github.com/sjwh
 
 Benchmarking (I tested this on my Windows Intel(x64) laptop so you might need to investigate tools for other computer hardware architectures and Operating Systems):
 Intel Power Gadget -> https://www.intel.com/content/www/us/en/developer/articles/tool/power-gadget.html
+
+A slight caveat from my exeperience with the benchmarking tool (I was running in powershell), you need to pass '&' before execution of command (this is just a powershell that I didn't know that might catch you out)
+
+sample command -> '& "C:\Program Files\Intel\Power Gadget 3.6\PowerLog3.0.exe" -file file_name_to_save_to.csv -verbose -cmd <place command to execute here>'
+
+Command can be 'python filepath.py' or 'go run filepath.go' or any other command you want so this bench marking tool is useful in that it can be used for all languages which are executable if you wish to do your own benchmark comparisons with other languages.
+
+With this command energy consumption report files are stored in directory of execution.
