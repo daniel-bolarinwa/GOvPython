@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestRegressor
 # data cleansing and manipulation
 def predict_flight_delays():
     flights = pd.read_csv('./flights.csv',)
-    airports = pd.read_csv('./airports.csv')
+    airports = pd.read_csv('../airports.csv')
 
     flights.isnull().values.any()
     flights.isnull().sum()
